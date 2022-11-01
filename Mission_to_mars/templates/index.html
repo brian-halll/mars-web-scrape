@@ -15,11 +15,50 @@
       <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
-    <h2>Latest Mars News</h2>
-      <h3>{{mars.article_title}}</h3>
-      <p>{{mars.article_description}}</p>
-      <img src = {{mars.featured_image_url}} >
-      <div>{{mars.mars_earth_html}}</div>
+
+    <!-- Section for Mars News -->
+    <div class="row" id="mars-news">
+      <div class="col-md-12">
+        <div class="media">
+          <div class="media-body">
+            <h2>Latest Mars News</h2>
+            <h4 xlass="media-heading">{{mars.article_title}}</h4>
+            <p>{{mars.article_description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section for Featured Image -->
+    <div class ="row" id="mars-featured-image">
+      <div class = "col-md-8">
+        <h2>Featured Mars Image</h2>
+        <img src={{mars.featured_image_url}} class="img-responsive" alt="Responsive Image">
+      </div>
+
+      <!-- Section for Mars facts -->
+      <div class="col-md-4">
+        <div class="row" id="mars-facts">
+          <div>{{mars.mars_earth_html | safe}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section for Mars Hemsipheres -->
+
+    {% for hemisphere in mars.hemisphere_image_urls %}
+    <div class="col-md-3">
+      <div class="thumbnail">
+        <img src="{{hemisphere.img_url }}">
+        <div class="caption">
+          <h3>{{hemisphere.title}}</h3>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+
   </div>
   </div>
 </body>
